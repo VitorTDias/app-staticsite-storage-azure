@@ -32,7 +32,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Step 04 - Terraform Init
-      run : run : terraform -chdir=./terraform/azure init
+      run : terraform -chdir=./terraform/azure init
 
     - name: Step 05 - Terraform Validate
       run : terraform -chdir=./terraform validate
