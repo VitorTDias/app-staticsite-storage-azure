@@ -6,8 +6,8 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "rg-staticsite-lb-tf-vitor"
-    storage_account_name = "staticsitelbtfvitor"
+    resource_group_name  = "rg-staticsite-storage-vitor"
+    storage_account_name = "staticsitestoragetfvitor"
     container_name       = "tfstate"
     key                  = "terraform.tfstate"
   }
