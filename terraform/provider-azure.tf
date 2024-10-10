@@ -1,15 +1,28 @@
 terraform {
-
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = ">= 3.7.0"
+      version = ">= 4.4.0"
     }
   }
-
+  backend "azurerm" {
+    resource_group_name  = "rg-staticsite-lb-tf-vitor"
+    storage_account_name = "staticsitelbtfvitor"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
-  features {}
-  alias = "cloud"
+  resource_provider_registrations = "none"
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = false
+    }
+  }
+}
+
+resource "azurerm_resource_group" "rg" {
+    name     = "rg-staticsite-storage-vitor"
+    location = "brazilsouth"
 }
